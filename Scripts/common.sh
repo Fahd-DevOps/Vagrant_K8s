@@ -63,13 +63,18 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable crio --now
 
-echo "CRI runtime installed susccessfully"
+echo "CRI runtime installed successfully"
 
 sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2
 
+# Download and add the Kubernetes GPG key
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+
+# Add the Kubernetes repository
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# Install Kubernetes components
 sudo apt-get update -y
 sudo apt-get install -y kubelet="$KUBERNETES_VERSION" kubectl="$KUBERNETES_VERSION" kubeadm="$KUBERNETES_VERSION"
 sudo apt-get update -y
