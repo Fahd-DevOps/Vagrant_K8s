@@ -13,10 +13,12 @@ nodes:
   control:
     cpu: 2
     memory: 4096
+    # disk: 27GB # Limiting hard disk usage to 7 GB for control node
   workers:
     count: 2
     cpu: 2
     memory: 4096
+    # disk: 17GB # Limiting hard disk usage to 7 GB for each worker node
 
 software:
   box: bento/ubuntu-22.04
