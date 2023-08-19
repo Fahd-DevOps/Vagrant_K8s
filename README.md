@@ -29,7 +29,7 @@ Run the Vagrant environment:
    
 ## Project Structure
   ```sh
-    Vagrant_K8s/
+     Vagrant_K8s/ 
     ├── scripts/
     │   ├── common.sh
     │   ├── master.sh
@@ -54,3 +54,4 @@ Run the Vagrant environment:
 ```sh
 vagrant destroy -f
 ```
+$${\color{lightblue}Eng \space \color{lightgray}Fahd \space \color{lightgray}Khaled}$$
